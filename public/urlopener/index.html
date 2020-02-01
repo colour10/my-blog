@@ -1,0 +1,136 @@
+﻿<!Doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>一键在线快速批量打开网址、链接、URL、网页、网站【网址批量打开工具】</title>
+    <meta name="keywords" content="网址批量打开工具" />
+    <meta name="description" content="【网址批量打开工具】主要用于解决一键在线批量打开URL、网址、网站，无需在您的电脑上安装任何软件，支持多平台和常见桌面浏览器，方便快捷~" />
+    <link rel="stylesheet" href="css/url.css" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<body>
+    <div id="hdr">
+        <div id="logo">
+            <a href="http://www.liuzongyang.com/urlopener/"><img src="images/logo.png" width="332" height="70" /></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="menu_w mar_bottom">
+        <div class="menu_top">
+            <a href="http://www.liuzongyang.com/urlopener/" title="Home">首页</a>
+            <a href="faq.html" title="FAQs">常见问题</a>
+            <a href="contact.html" title="Contact">联系我们</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="container">
+        <div id="lWell">
+            复制并粘贴网址到框架内，点击<strong>打开</strong>按钮打开全部，点击<strong>消除</strong>按钮把网址消除。请点击<a href="faq.html">常见问题</a>了解浏览器设置问题以及其他注意事项。<br><br>
+            <textarea name="id" id="id"></textarea>
+            <script type="text/javascript">
+                document.getElementById('id').value = "http://www.baidu.com/\nhttp://www.sina.com.cn/\nhttp://www.163.com/\n";
+
+                function MultiUrlOpener(skp) {
+                    ttt = document.getElementById('id').value;
+                    if (trim(ttt) == '') {
+                        return
+                    };
+                    ttt = removeBlank(ttt);
+                    ttt = escape(ttt);
+                    ttt = ttt.replace("%20", "%0A");
+                    if (ttt.indexOf('%0D%0A') != -1) {
+                        ttt = ttt.split('%0D%0A');
+                    } else if (ttt.indexOf('%0A') != -1) {
+                        ttt = ttt.split('%0A');
+                    } else {
+                        ttt = ttt.split('%20');
+                    }
+                    for (i = 0; i < ttt.length; i++) {
+                        ttt[i] = trim(unescape(ttt[i]));
+                        ttt[i] = ttt[i].replace("http://", "");
+                        ttt[i] = 'http://' + ttt[i];
+                    }
+                    mor = (ttt.length < 30);
+                    toomy = (skp) ? "none" : ((mor) ? "none" : "block");
+                    document.getElementById('toomany').style.display = toomy;
+                    for (c = 0; c < ttt.length; c++) {
+                        if (ttt[c] != "") {
+                            if (ttt[c] != "http://") {
+                                if (mor || skp) {
+                                    window.open(ttt[c], '_blank');
+                                }
+                            }
+                        }
+                    }
+                }
+
+                function trim(txt) {
+                    if (!txt || txt == '') {
+                        return ''
+                    };
+                    while (txt.charAt(0) == ' ') {
+                        txt = txt.substring(1, txt.length)
+                    };
+                    while (txt.charAt(txt.length - 1) == ' ') {
+                        txt = txt.substring(0, txt.length - 1)
+                    };
+                    return txt;
+                }
+
+                function ClearAll() {
+                    document.getElementById('id').value = '';
+                }
+
+                function removeBlank(str) {
+                    str = str.replace(/(\s+$)|(^\s+)/g, "");
+                    str = str.replace(/\s+/g, "\n");
+                    return str;
+                }
+            </script>
+            <div class="clear">
+                <div class="float_left">
+                    <input type="button" class="iput" src="images/btn_submit.gif" width="124" height="37" alt="Submit" title="Submit" onclick="MultiUrlOpener(false)" />
+                </div>
+                <div class="float_left w127">
+                    <input value="Clear All" type="button" onclick="ClearAll()" class="clearimg" />
+                </div>
+            </div>
+            <div class="tip tip_danger">
+                <p><b>初次使用本站，请务必注意：</b></p>
+                <p>■ 您的浏览器必须打开 Javascript 支持（所有浏览器均默认支持，如果您手动关闭了请将其打开）！</p>
+                <p>■ 为了良好的打开体验，请尽量使用支持多标签的浏览器，推荐使用 火狐浏览器 或 Chrome！</p>
+                <p>■ 大部分浏览器都对弹出窗口的行为和次数进行了限制，请参考 <a href="faq.html">常见问题</a> 相应的教程对你的浏览器进行一番设置，不然无法正常使用！</p>
+                <p>■ 如果按教程设置后依然无法正常使用，请按 Ctrl + F5 强制刷新浏览器！</p>
+                <p>■ 网址的长度不受限制，鼠标双击输入框可选中全部的网址！</p>
+            </div>
+            <div id="toomany">经测试，同时打开30个或以上的网址会影响浏览器和电脑运作。<strong><a href="javascript:MultiUrlOpener(true)" style="text-decoration:underline">继续打开！</a></strong></div>
+        </div>
+        <div id="rWell">
+            <!-- Baidu Button BEGIN -->
+            <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+                <a class="bds_qzone"></a>
+                <a class="bds_tsina"></a>
+                <a class="bds_tqq"></a>
+                <a class="bds_renren"></a>
+                <a class="bds_t163"></a> <span class="bds_more"></span>
+                <a class="shareCount"></a>
+            </div>
+            <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6877067"></script>
+            <script type="text/javascript" id="bdshell_js"></script>
+            <script type="text/javascript">
+                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
+            </script>
+            <!-- Baidu Button END -->
+        </div>
+    </div>
+
+    <div style="clear:both;margin:30px auto;text-align:center;">
+        Copyright © 2009 - 2018 网站批量打开工具 All Rights Reserved. 技术支持：
+        <a href="http://www.liuzongyang.com/" target="_blank">刘宗阳博客</a>
+    </div>
+
+</body>
+
+</html>
