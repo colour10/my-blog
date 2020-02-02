@@ -10,7 +10,7 @@
                         @if ($nav2['pid'] == $nav['id'])
                             <li class="menu-item menu-item-type-post_type menu-item-object-page"
                                 id="menu-item-{{ $nav2['id'] }}"><a
-                                    href="{{ route('channels.show', ['uri' => $nav['uri']]) }}">{{ $nav2['name'] }}</a>
+                                    href="{{ route('channels.show', ['uri' => $nav2['uri']]) }}">{{ $nav2['name'] }}</a>
                             </li>
                         @endif
                     @endforeach
