@@ -28,7 +28,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::get('users/passwordResetSuccess', 'UsersController@passwordResetSuccess')->name('users.passwordResetSuccess');
 
 // 标签
-Route::resource('tags', 'TagsController')->only(['index', 'show']);
+Route::resource('tags', 'TagsController')->only(['show']);
 
 // 评论
 Route::resource('comments', 'CommentsController')->only(['store']);
@@ -36,11 +36,10 @@ Route::resource('comments', 'CommentsController')->only(['store']);
 // 留言
 Route::resource('guestbooks', 'GuestbooksController')->only(['index', 'store']);
 
-// 信息
-Route::resource('infos', 'InfosController')->only(['index']);
-
 // 频道
 Route::get('/{uri}', 'ChannelsController@show')->name('channels.show');
+
+// 信息
 Route::get('/{uri}/{id}', 'InfosController@show')->name('infos.show');
 
 

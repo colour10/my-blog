@@ -8,11 +8,10 @@ use App\Models\Info;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 use Thomaswelton\LaravelGravatar\Facades\Gravatar;
 
 /**
@@ -22,15 +21,6 @@ use Thomaswelton\LaravelGravatar\Facades\Gravatar;
  */
 class InfosController extends Controller
 {
-    /**
-     * 信息列表
-     * @return LengthAwarePaginator
-     */
-    public function index()
-    {
-        return Info::query()->paginate(7);
-    }
-
     /**
      * 信息详情
      * @param $uri
@@ -42,31 +32,31 @@ class InfosController extends Controller
     {
         // 频道不存在，则报404
         if (
-            !$channel = Cache::remember('channel_' . $uri, 120, function () use ($uri) {
-                return Channel::query()->select(['id'])->where('uri', $uri)->first();
-            })
+        !$channel = Cache::remember('channel_' . $uri, 120, function () use ($uri) {
+            return Channel::query()->select(['id'])->where('uri', $uri)->first();
+        })
         ) {
             abort(ApiErrors::ERROR_NOTFOUND[0], ApiErrors::ERROR_NOTFOUND[1]);
         }
 
         // 如果信息不存在，则报404
         if (
-            !$info = Cache::remember('info_' . $id, 120, function () use ($id) {
-                return Info::query()
-                    ->with(['channel:id,name,uri', 'tags:tags.id,tags.name'])
-                    ->select([
-                        'id',
-                        'channel_id',
-                        'title',
-                        'keywords',
-                        'description',
-                        'content',
-                        'click',
-                        'sort',
-                        'created_at',
-                    ])
-                    ->find($id);
-            })
+        !$info = Cache::remember('info_' . $id, 120, function () use ($id) {
+            return Info::query()
+                ->with(['channel:id,name,uri', 'tags:tags.id,tags.name'])
+                ->select([
+                    'id',
+                    'channel_id',
+                    'title',
+                    'keywords',
+                    'description',
+                    'content',
+                    'click',
+                    'sort',
+                    'created_at',
+                ])
+                ->find($id);
+        })
         ) {
             abort(ApiErrors::ERROR_NOTFOUND[0], ApiErrors::ERROR_NOTFOUND[1]);
         }
@@ -94,7 +84,7 @@ class InfosController extends Controller
         $tempTagInfos = Cache::remember('tempTagInfos', 120, function () use ($info) {
             return $info->tags()->with(['infos:infos.id,infos.title,infos.channel_id'])->get()->pluck('infos')->toArray();
         });
-        $tagInfos = Cache::remember('tagInfos', 120, function () use ($tempTagInfos, $id, $tagInfos) {
+        $tagInfos     = Cache::remember('tagInfos', 120, function () use ($tempTagInfos, $id, $tagInfos) {
             foreach ($tempTagInfos as $tempTagInfo) {
                 foreach ($tempTagInfo as $taginfo) {
                     // 同时也要把当前文章进行过滤
