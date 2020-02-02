@@ -27,21 +27,21 @@ class UpvotesController extends Controller
         // 判断info_id和user_id是否有值
         $user_id = $request->input('uid');
         $info_id = $request->input('pid');
-        $info    = Info::query()->find($info_id);
-        $upvote  = $info->upvote($user_id);
+        $upvote  = Info::query()->find($info_id)->upvote($user_id);
         // 如果存在赞，则取消
-        if ($upvote->exists()) {
-            $upvote->delete();
-        } else {
-            Upvote::query()->create([
-                'info_id' => $info_id,
-                'user_id' => $user_id,
-            ]);
+        switch ($upvote->exists()) {
+            case true:
+                $upvote->delete();
+                break;
+            default:
+                Upvote::query()->create([
+                    'info_id' => $info_id,
+                    'user_id' => $user_id,
+                ]);
         }
-        // 统计赞
-        // 返回成功
+        // 返回点赞数
         return $this->jsonSuccess([
-            'upvotes_count' => $info->upvotes_count,
+            'upvotes_count' => Info::query()->find($info_id)->upvotes_count,
         ]);
     }
 }

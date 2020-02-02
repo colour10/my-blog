@@ -418,6 +418,9 @@ if ($('.post-like').length) {
                     '_token': $('meta[name="csrf-token"]').attr('content'),
                 },
                 success: function (data, textStatus, xhr) {
+
+                    console.log(data);
+
                     if (data.code !== 0) {
                         layer.msg(data.msg);
                     } else {
