@@ -17,11 +17,11 @@ class CreateGuestbooksTable extends Migration
         Schema::create('guestbooks', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('主键ID');
             $table->unsignedBigInteger('user_id')->nullable()->comment('用户ID');
-            $table->string('title')->nullable()->default('')->comment('标题');
+            $table->string('title')->index()->nullable()->default('')->comment('标题');
             $table->text('content')->comment('内容');
             $table->text('answer')->nullable()->comment('管理员回复');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('创建时间');
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE 
+            $table->timestamp('created_at')->index()->default(DB::raw('CURRENT_TIMESTAMP'))->comment('创建时间');
+            $table->timestamp('updated_at')->index()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE 
 CURRENT_TIMESTAMP'))->comment('更新时间');
             // 添加软删除
             $table->timestamp('deleted_at')->nullable()->comment('删除时间');

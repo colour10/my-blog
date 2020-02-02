@@ -19,8 +19,8 @@ class CreateChanneltypesTable extends Migration
             $table->string('name')->comment('名称');
             $table->string('description')->nullable()->comment('简介');
             $table->string('link')->nullable()->comment('外部链接地址');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('创建时间');
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE 
+            $table->timestamp('created_at')->index()->default(DB::raw('CURRENT_TIMESTAMP'))->comment('创建时间');
+            $table->timestamp('updated_at')->index()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE 
 CURRENT_TIMESTAMP'))->comment('更新时间');
             // 添加软删除
             $table->timestamp('deleted_at')->nullable()->comment('删除时间');

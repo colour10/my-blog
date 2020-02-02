@@ -17,9 +17,9 @@ class CreateLinksTable extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('主键ID');
             $table->string('name')->comment('名称');
-            $table->string('url')->comment('链接地址');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('创建时间');
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE 
+            $table->string('url')->index()->comment('链接地址');
+            $table->timestamp('created_at')->index()->default(DB::raw('CURRENT_TIMESTAMP'))->comment('创建时间');
+            $table->timestamp('updated_at')->index()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE 
 CURRENT_TIMESTAMP'))->comment('更新时间');
         });
         // 表注释
