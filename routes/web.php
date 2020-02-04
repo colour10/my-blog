@@ -41,7 +41,7 @@ Route::resource('guestbooks', 'GuestbooksController')->only(['index', 'store']);
 Route::get('/{uri}', 'ChannelsController@show')->name('channels.show');
 
 // 信息
-Route::get('/{uri}/{id}', 'InfosController@show')->name('infos.show');
+Route::get('/{uri}/{id}.html', 'InfosController@show')->name('infos.show');
 
 
 
