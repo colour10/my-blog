@@ -16,7 +16,6 @@
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
         "predis/predis": "^1.1",
-        "renatomarinho/laravel-page-speed": "^1.8",
         "thomaswelton/laravel-gravatar": "^1.2"
     },
     "require-dev": {

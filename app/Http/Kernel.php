@@ -36,12 +36,6 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-
-            // HTML压缩
-            \RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes::class, // 移除无用的 HTML 属性
-            \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class, // 移除注释
-            \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,  // 移除不必要的 URL 前缀
-            \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class, // 处理换行符和空格
         ],
 
         'api' => [
