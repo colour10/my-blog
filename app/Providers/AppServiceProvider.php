@@ -7,6 +7,7 @@ use App\Models\Channel;
 use App\Models\Comment;
 use App\Models\Info;
 use App\Models\Tag;
+use App\Models\Link;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
@@ -114,8 +115,15 @@ class AppServiceProvider extends ServiceProvider
                     ->get()
                     ->toArray();
             });
+            // 友情链接
+            $links = Cache::remember('links', 120, function () {
+                return Link::query()
+                    ->select(['name', 'url'])
+                    ->get()
+                    ->toArray();
+            });
             // 赋值
-            $view->with(compact('author', 'webname', 'routeInfo', 'navs', 'subsnav_counts', 'hotInfos', 'recentComments', 'allTags'));
+            $view->with(compact('author', 'webname', 'routeInfo', 'navs', 'subsnav_counts', 'hotInfos', 'recentComments', 'allTags', 'links'));
         });
     }
 }
