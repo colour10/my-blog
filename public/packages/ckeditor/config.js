@@ -31,5 +31,5 @@ CKEDITOR.editorConfig = function (config) {
 
     //粘贴图片时用得到
     config.extraPlugins = 'uploadimage';
-    config.uploadUrl = '/admin/upload';
+    config.uploadUrl = '/_@admin@_/upload';
 };
