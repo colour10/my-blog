@@ -7,7 +7,7 @@
             <ul class='xoxo blogroll'>
                 @if (isset($links))
                 @foreach ($links as $link)
-                <li><a href="{{ $link->url }}" target="_blank">{{ $link->name }}</a></li>
+                <li><a href="{{ $link['url'] }}" target="_blank">{{ $link['name'] }}</a></li>
                 @endforeach
                 @endif
             </ul>
