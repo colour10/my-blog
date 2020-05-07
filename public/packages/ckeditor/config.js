@@ -23,8 +23,8 @@ CKEDITOR.editorConfig = function (config) {
     config.removeButtons = 'Templates,Print,Find,Replace,SelectAll,Scayt,Checkbox,Form,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CreateDiv,Blockquote,BidiLtr,BidiRtl,Flash,PageBreak,Iframe,About,ShowBlocks,Smiley,SpecialChar,HorizontalRule,CopyFormatting,RemoveFormat';
 
     //上传图片窗口用到的接口
-    config.filebrowserImageUploadUrl = "/admin/upload";
-    config.filebrowserUploadUrl = "/admin/upload";
+    config.filebrowserImageUploadUrl = "/_@admin@_/upload";
+    config.filebrowserUploadUrl = "/_@admin@_/upload";
 
     // 使上传图片弹窗出现对应的“上传”tab标签
     config.removeDialogTabs = 'image:advanced;link:advanced';
