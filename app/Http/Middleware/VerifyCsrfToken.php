@@ -20,6 +20,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         // 后台图片上传
-        '/admin/upload',
+        '/_@admin@_/upload',
     ];
 }
