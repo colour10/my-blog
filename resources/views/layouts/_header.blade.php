@@ -33,13 +33,13 @@
                 </li>
             </ul>
 
-            <span id="logined" @if (\Session::has('user')) style="display:inline;" @else style="display:none;" @endif>
+            <span id="logined" @if (Session::has('user')) style="display:inline;" @else style="display:none;" @endif>
                         <a href="javascript:;">欢迎您，<span
-                                id="user_name">{{ \Session::get('user')['username'] }}</span></a>&nbsp; &nbsp; <a
+                                id="user_name">{{ Session::has('user') ? Session::get('user')['username'] : '' }}</span></a>&nbsp; &nbsp; <a
                     class="logout">退出登陆</a>
                     </span>
 
-            <span id="notlogin" @if (\Session::has('user')) style="display:none;" @else style="display:inline;" @endif>
+            <span id="notlogin" @if (Session::has('user')) style="display:none;" @else style="display:inline;" @endif>
                         <a href="javascript:;" class="signin-loader">Hi, 请登录</a> &nbsp; &nbsp; <a href="javascript:;"
                                                                                                   class="signup-loader">我要注册</a> &nbsp; &nbsp;
                 <!-- <a href="/password/reset">找回密码</a> -->

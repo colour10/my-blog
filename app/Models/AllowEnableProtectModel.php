@@ -5,7 +5,12 @@ namespace App\Models;
 /**
  * 需要做启用和保护的模型
  * Class Channel
+ *
  * @package App\Models
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AllowEnableProtectModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AllowEnableProtectModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AllowEnableProtectModel query()
+ * @mixin \Eloquent
  */
 class AllowEnableProtectModel extends Model
 {

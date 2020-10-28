@@ -12,7 +12,34 @@ use Thomaswelton\LaravelGravatar\Facades\Gravatar;
 /**
  * 评论模型
  * Class Comment
+ *
  * @package App\Models
+ * @property int $id 主键ID
+ * @property int|null $info_id 所属信息ID
+ * @property int $pid 父节点ID
+ * @property int|null $user_id 评论用户ID
+ * @property string $content 评论内容
+ * @property \Illuminate\Support\Carbon $created_at 创建时间
+ * @property \Illuminate\Support\Carbon $updated_at 更新时间
+ * @property \Illuminate\Support\Carbon|null $deleted_at 删除时间
+ * @property-read \App\Models\Info|null $info
+ * @property-read \App\Models\Comment $parent
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereInfoId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment wherePid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment withoutTrashed()
+ * @mixin \Eloquent
  */
 class Comment extends Model
 {

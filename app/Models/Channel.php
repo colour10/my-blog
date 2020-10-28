@@ -9,7 +9,53 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * 频道模型
  * Class Channel
+ *
  * @package App\Models
+ * @property int $id 主键ID
+ * @property string $name 名称
+ * @property string|null $uri uri路径英文名称
+ * @property int|null $pid 父类ID，0为顶级分类
+ * @property int|null $channeltype_id 类型
+ * @property int|null $sort 排序
+ * @property string|null $scontent 简介
+ * @property string|null $content 完整介绍
+ * @property string|null $link 外部链接地址
+ * @property string|null $title SEO标题
+ * @property string|null $keywords SEO关键字
+ * @property string|null $description SEO描述
+ * @property string|null $cover 封面图片地址
+ * @property int|null $page 分页
+ * @property \Illuminate\Support\Carbon $created_at 创建时间
+ * @property \Illuminate\Support\Carbon $updated_at 更新时间
+ * @property \Illuminate\Support\Carbon|null $deleted_at 删除时间
+ * @property-read \App\Models\Channeltype|null $channeltype
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Info[] $infos
+ * @property-read int|null $infos_count
+ * @property-read \App\Models\Channel|null $parent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Channel onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereChanneltypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereCover($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel wherePage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel wherePid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereScontent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereSort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Channel whereUri($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Channel withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Channel withoutTrashed()
+ * @mixin \Eloquent
  */
 class Channel extends AllowEnableProtectModel
 {
