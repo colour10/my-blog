@@ -18,4 +18,8 @@ class Model extends BaseModel
 {
     // 默认黑名单为空，也就是所有的字段都可以写入
     protected $guarded = [];
+    // 去掉 pivot
+    protected $hidden = [
+        'pivot',
+    ];
 }

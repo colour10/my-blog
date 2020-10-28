@@ -21,7 +21,7 @@ class GuestbooksController extends Controller
     /**
      * 留言板列表
      *
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
      */
     public function index()
     {

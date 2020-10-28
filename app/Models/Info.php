@@ -59,7 +59,7 @@ class Info extends AllowEnableProtectModel
     // 引入软删除
     use SoftDeletes;
 
-    // 统计计数
+    // 统计次数
     protected $withCount = ['comments', 'tags', 'upvotes'];
 
     // 字段映射
@@ -86,9 +86,6 @@ class Info extends AllowEnableProtectModel
      */
     protected $dates = [
         'crontab_at',
-        'created_at',
-        'updated_at',
-        'deleted_at',
     ];
 
     /**
@@ -129,7 +126,7 @@ class Info extends AllowEnableProtectModel
 
     /**
      * 信息-赞，针对一个用户，一对一
-     * @param integer $user_id
+     * @param $user_id -用户id
      * @return HasOne
      */
     public function upvote($user_id)

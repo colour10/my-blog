@@ -80,16 +80,16 @@ class InfosController extends Controller
         ]);
 
         // 标签，并且筛选出关联文章
-        $tagInfos     = [];
+        $tagInfos = [];
         $tempTagInfos = Cache::remember('tempTagInfos', 120, function () use ($info) {
             return $info->tags()->with(['infos:infos.id,infos.title,infos.channel_id'])->get()->pluck('infos')->toArray();
         });
-        $tagInfos     = Cache::remember('tagInfos', 120, function () use ($tempTagInfos, $id, $tagInfos) {
+        $tagInfos = Cache::remember('tagInfos', 120, function () use ($tempTagInfos, $id, $tagInfos) {
             foreach ($tempTagInfos as $tempTagInfo) {
                 foreach ($tempTagInfo as $taginfo) {
                     // 同时也要把当前文章进行过滤
                     if (!isset($tagInfos[$taginfo['id']]) && $taginfo['id'] != $id) {
-                        $taginfo['uri']           = Channel::query()->find($taginfo['channel_id'])->uri;
+                        $taginfo['uri'] = Channel::query()->find($taginfo['channel_id'])->uri;
                         $tagInfos[$taginfo['id']] = $taginfo;
                     }
                 }
@@ -104,7 +104,7 @@ class InfosController extends Controller
                 // 时间格式化
                 $comment->created_at_forhuman = Carbon::parse($comment->created_at)->diffForHumans();
                 // 上级节点信息
-                $parent                = $comment->parent;
+                $parent = $comment->parent;
                 $comment->pid_username = $parent ? User::query()->select(['username'])->find($parent->user_id)->username : '';
             })->toArray());
         });
@@ -112,8 +112,8 @@ class InfosController extends Controller
         // 变成数组，进行后续的操作
         $info = $info->toArray();
         // 三要素
-        $title       = $info['title'];
-        $keywords    = $info['keywords'];
+        $title = $info['title'];
+        $keywords = $info['keywords'];
         $description = $info['description'];
         // 标签
         $tags = Cache::remember('info_' . $info['id'] . '_tags', 120, function () use ($info) {

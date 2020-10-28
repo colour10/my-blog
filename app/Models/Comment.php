@@ -59,16 +59,6 @@ class Comment extends Model
     ];
 
     /**
-     * 应被转换成日期的属性
-     * @var array
-     */
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
-    /**
      * 评论-信息, 一对多反向
      * @return BelongsTo
      */
@@ -112,7 +102,7 @@ class Comment extends Model
         // 时间人性化处理
         foreach ($comments as $k => $comment) {
             $comments[$k]->created_at_forhuman = Carbon::parse($comment->created_at)->diffForHumans();
-            $comments[$k]->avatar              = Gravatar::src($comment->email);
+            $comments[$k]->avatar = Gravatar::src($comment->email);
             // 回复人姓名
             // 如果父节点是0，那么就是空
             if ($comment->pid) {
