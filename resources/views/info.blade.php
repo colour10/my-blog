@@ -101,7 +101,8 @@
                                     <input type='hidden' name='comment_post_ID' value='{{ $info_id }}'
                                            id='comment_post_ID'/>
                                     <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
-                                    <input type="hidden" name="user_id" value="{{ \Session::get('user')['id'] }}">
+                                    <input type="hidden" name="user_id"
+                                           value="{{ Session::has('user') ? Session::get('user')['id'] : '' }}">
                                     <label for="comment_mail_notify" class="checkbox inline hide" style="padding-top:0"><input
                                             type="checkbox" name="comment_mail_notify" id="comment_mail_notify"
                                             value="comment_mail_notify" checked="checked"/>有人回复时邮件通知我</label>
@@ -129,7 +130,7 @@
                                 </div>
                                 <div class="comt-main" id="div-comment-{{ $comment['id'] }}">
                                     @if ($comment['pid'])
-                                        <p>回复：{{ $comment['pid_username'] }}　{{ $comment['content'] }}</p>
+                                        <p>回复：{{ $comment['pid_username'] }} {{ $comment['content'] }}</p>
                                     @else
                                         <p>{{ $comment['content'] }}</p>
                                     @endif
