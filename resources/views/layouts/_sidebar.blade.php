@@ -77,7 +77,7 @@
 
         <strong>常用小工具</strong>
 
-        <a class="style01" href="/urlopener/index.html">
+        <a class="style01" target="_blank" href="/urlopener/index.html">
             <h2>网址批量打开工具</h2>
             <p>【网址批量打开工具】主要用于解决一键在线批量打开URL、网址、网站，无需在您的电脑上安装任何软件，支持多平台和常见桌面浏览器，方便快捷~</p>
         </a>
