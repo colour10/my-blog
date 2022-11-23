@@ -11,6 +11,7 @@
     </div>
 
     <!-- 推荐文字广告位 Start -->
+    <!--
     <div class="widget sidebar_ui_textasb widget_ui_tools">
         <strong>吐血推荐</strong>
         <a class="style01" href="https://my.hxkvm.com/flag/4951" target="_blank">
@@ -18,6 +19,7 @@
             <p>采用成熟的KVM虚拟化技术，配合自主研发简体中文易操作控制面板，并带有一键备份，一键恢复等功能，也是刘宗阳博客目前在用的主机，强烈推荐~</p>
         </a>
     </div>
+    -->
     <!-- 推荐文字广告位 End -->
 
     <div class="widget widget_ui_posts">
